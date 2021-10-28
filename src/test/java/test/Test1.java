@@ -1,7 +1,9 @@
 package test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -17,7 +19,7 @@ public class Test1 {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        baseURL="";
+        baseURL="https://www.amazon.com/";
         driver.get(baseURL);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -26,7 +28,10 @@ public class Test1 {
     @Test
     public void test()
     {
+         WebElement searchBox =  driver.findElement(By.id("twotabsearchtextbox"));
+         searchBox.sendKeys("iphone12");
 
+        searchBox.click();
 
     }
     @AfterMethod

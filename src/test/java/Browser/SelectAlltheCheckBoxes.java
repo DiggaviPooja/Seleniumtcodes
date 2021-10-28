@@ -3,7 +3,7 @@ package Browser;
 public class SelectAlltheCheckBoxes {
 
     //1. select specific checkbox
-    //normal method find the checkboc webelement and click on that
+    //normal method find the checkbox webelement and click on that
 
 
     //2. select all the checkboxes
