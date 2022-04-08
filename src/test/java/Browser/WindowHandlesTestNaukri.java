@@ -3,20 +3,15 @@ package Browser;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
-public class WindowHandles1 {
+public class WindowHandlesTestNaukri {
 
     WebDriver driver;
     String baseURL;
@@ -25,7 +20,7 @@ public class WindowHandles1 {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        baseURL="https://opensource-demo.orangehrmlive.com/";
+        baseURL="http://www.naukri.com/";
         driver.get(baseURL);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -37,7 +32,7 @@ public class WindowHandles1 {
         String parentID = driver.getWindowHandle();
         System.out.println("Parent Window ID: " +parentID);
 
-        driver.findElement(By.linkText("OrangeHRM, Inc")).click();
+        driver.findElement(By.xpath("//div[normalize-space()='Register']")).click();
         //getwindowhandles // get all handles
        Set<String> windoIds = driver.getWindowHandles();
        //first Method -Iterator()
@@ -57,10 +52,12 @@ public class WindowHandles1 {
             {
                 driver.switchTo().window(handle);
                 Thread.sleep(2000);
-                String display = driver.findElement(By.cssSelector("div[class='header-block'] h3")).getText();
+                String display = driver.findElement(By.cssSelector(".global-title-1")).getText();
                 System.out.println(display);
                 driver.close();
                 break;
+               // driver.switchTo().window(handle);
+
             }
         }
 
